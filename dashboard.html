@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Talis Estoques</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            
+        </div>
+    </header>
+    
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo-container">
+                <img src="TALIS ESTOQUES 4.png" alt="Logo Talis Estoques">
+            </div>
+            <ul class="menu">
+                <li><a href="dashboard.html"><img src="images/icon-dash.png" alt="Dashboard"> Dashboard</a></li>
+                <li><a href="cadastros.html"><img src="images/icon-cadastros.png" alt="Cadastros"> Cadastros</a></li>
+                <li><a href="estoque.html"><img src="images/icon-estoque.png" alt="Estoques"> Estoque</a></li>
+                <li><a href="vendas.html"><img src="images/icon-vendas.png" alt="Vendas"> Vendas</a></li>
+                <li><a href="fiscal.html"><img src="images/icon-fiscal.png" alt="Fiscal"> Fiscal</a></li>
+                <li><a href="financeiro.html"><img src="images/icon-financeiro.png" alt="Financeiro"> Financeiro</a></li>
+                <li><a href="ecommerce.html"><img src="images/icon-ecommerce.png" alt="E-commerce"> E-commerce</a></li>
+                <li><a href="consultas.html"><img src="images/icon-consultas.png" alt="Consultas"> Consultas</a></li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <h1>Dashboard</h1>
+            <div class="cards">
+                <div class="card">VENDAS DE HOJE <br> <span>R$XXX,XX</span></div>
+                <div class="card">A PAGAR HOJE <br> <span>R$XX,XX</span></div>
+                <div class="card">A RECEBER HOJE <br> <span>R$X.XXX,XX</span></div>
+                <div class="card destaque">FATURAMENTO DO MÊS <br> <span>R$XX.XXX,XX</span></div>
+            </div>
+
+            <div class="charts">
+                <div class="chart-container">
+                    <h2>Vendas por Mês</h2>
+                    <canvas id="lineChart"></canvas>
+                </div>
+                <div class="right-section">
+                    <div class="help-box">
+                        <p>Precisa de ajuda? Fale com um de nossos atendentes!</p>
+                        <button>Atendimento via Chat</button>
+                    </div>
+                    <div class="chart-container">
+                        <h2>Despesas por Categoria</h2>
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 Talis Estoques. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Gráfico de Linha - Vendas por Mês
+const ctx1 = document.getElementById('lineChart').getContext('2d');
+new Chart(ctx1, {
+    type: 'line',
+    data: {
+        labels: ['JAN', 'FEV', 'MAR', 'ABR', 'MAI'],
+        datasets: [{
+            label: 'Vendas',
+            data: [20, 30, 25, 40, 42],
+            borderColor: '#6B21A8', // Roxo escuro
+            backgroundColor: '#C084FC', // Roxo mais claro
+            tension: 0.4,
+            fill: true
+        }]
+    },
+    options: { responsive: true }
+});
+
+// Gráfico de Pizza - Despesas por Categoria
+const ctx2 = document.getElementById('pieChart').getContext('2d');
+new Chart(ctx2, {
+    type: 'pie',
+    data: {
+        labels: ['Publicidade', 'Funcionários', 'Fornecedores', 'Energia', 'Aluguel', 'Impostos'],
+        datasets: [{
+            data: [42, 29, 13, 7, 5, 4],
+            backgroundColor: ['#6B21A8', '#9333EA', '#C084FC', '#E9D5FF', '#F3E8FF', '#FAF5FF'], // Tons de lilás e roxo
+            borderColor: '#ffffff',
+            borderWidth: 2
+        }]
+    },
+    options: { responsive: true }
+});
+
+    </script>
+</body>
+</html>
